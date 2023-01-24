@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #E1D7C6;
+        }
+        div {
+            position: absolute;
+            background-color: #F7F5EB;
+            display: inline-block;
+            padding: 5%;
+            right: 34%;
+            top: 30%;  
+        }
+        h3 {
+            position: absolute;
+            right: 5%;
+            top: 5%;
+        }
+        button {
+            height: 20px;
+            width: 80px;
+            text-align: center;
+        }
+
+
+    </style>
+</head>
+<body>
+    
+        
+        <div>
+            <h3>Your Score: </h3>
+            <h2>what will be the sum of 4 + 3 ?</h2>
+            <input type="number">
+            <button onclick="play()">Check</button>
+        </div>
+
+    <script>
+        var num1 = Math.floor(Math.random()*10)
+        var num2 = Math.floor(Math.random()*10)
+        var addition = "What will be the sum of " + num1 + " + " + num2 + " ?";
+        var score = 0;
+        document.querySelector("h3").innerHTML = "Your Score: " + score;
+        document.querySelector("h2").innerHTML = addition;
+        if(document.querySelector("input").value == (num1+num2)){
+            score++;
+        }
+
+        function play(){     
+            if(document.querySelector("input").value == (num1+num2)){
+                score++;
+                document.querySelector("h3").innerHTML = "Your Score: " + score;
+            }else{
+                document.querySelector("div").innerHTML = "";
+                let newH = document.createElement("h2");
+                newH.innerHTML = "Ahh, you got snap!!! Your score is " + score;
+                let oneDiv = document.querySelector("div");
+                oneDiv.append(newH);
+                oneDiv.style.background = "red";
+
+                return;
+            }
+            num1 = Math.floor(Math.random()*10)
+            num2 = Math.floor(Math.random()*10)
+            addition = "What will be the sum of " + num1 + " + " + num2 + "?";
+            document.querySelector("h2").innerHTML = addition;
+            document.querySelector("input").value = null;
+        }
+    </script>
+</body>
+</html>
